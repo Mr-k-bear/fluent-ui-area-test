@@ -51,9 +51,15 @@ class DetailsListBasicExample extends React.Component<{}, IDetailsListBasicExamp
         setKey="set"
         layoutMode={DetailsListLayoutMode.justified}
         selectionPreservedOnEmptyClick={true}
-        ariaLabelForSelectionColumn="Toggle selection"
-        ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-        checkButtonAriaLabel="select row"
+
+        ariaLabel="Aria label for grid"
+        ariaLabelForGrid="Aria label for grid"
+        ariaLabelForListHeader="Aria label for list header"
+        ariaLabelForSelectionColumn="Aria label for selection column"
+        ariaLabelForSelectAllCheckbox="Aria label for select all checkbox"
+
+        checkButtonAriaLabel="Check button aria label"
+        checkButtonGroupAriaLabel="Check button group aria label"
       />
     );
   }
