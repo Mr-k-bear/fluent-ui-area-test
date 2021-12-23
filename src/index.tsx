@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import * as React from 'react';
-import { DetailsList, DetailsListLayoutMode, Selection, IColumn } from '@fluentui/react/lib/DetailsList';
+import { DetailsList, DetailsListLayoutMode, IColumn } from '@fluentui/react/lib/DetailsList';
 import  {  initializeIcons  }  from  '@fluentui/react/lib/Icons' ;
 initializeIcons();
 
