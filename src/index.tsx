@@ -1,21 +1,63 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
-import { App } from './App';
-import { mergeStyles } from '@fluentui/react';
-import reportWebVitals from './reportWebVitals';
+import * as React from 'react';
+import { DetailsList, DetailsListLayoutMode, Selection, IColumn } from '@fluentui/react/lib/DetailsList';
+import  {  initializeIcons  }  from  '@fluentui/react/lib/Icons' ;
+initializeIcons();
 
-// Inject some global styles
-mergeStyles({
-  ':global(body,html,#root)': {
-    margin: 0,
-    padding: 0,
-    height: '100vh',
-  },
-});
+interface IDetailsListBasicExampleItem {
+  key: number;
+  name: string;
+  value: number;
+}
 
-ReactDOM.render(<App />, document.getElementById('root'));
+interface IDetailsListBasicExampleState {
+  items: IDetailsListBasicExampleItem[];
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+class DetailsListBasicExample extends React.Component<{}, IDetailsListBasicExampleState> {
+
+  private _allItems: IDetailsListBasicExampleItem[];
+  private _columns: IColumn[];
+
+  constructor(props: {}) {
+    super(props);
+
+    // Populate with items for demos.
+    this._allItems = [];
+    for (let i = 0; i < 3; i++) {
+      this._allItems.push({
+        key: i,
+        name: 'Item ' + i,
+        value: i,
+      });
+    }
+
+    this._columns = [
+      { key: 'column1', name: 'Name', fieldName: 'name', minWidth: 100, maxWidth: 200, isResizable: true },
+      { key: 'column2', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true },
+    ];
+
+    this.state = {
+      items: this._allItems,
+    };
+  }
+
+  public render(): JSX.Element {
+    const { items } = this.state;
+    return (
+      <DetailsList
+        items={items}
+        columns={this._columns}
+        setKey="set"
+        layoutMode={DetailsListLayoutMode.justified}
+        selectionPreservedOnEmptyClick={true}
+        ariaLabelForSelectionColumn="Toggle selection"
+        ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+        checkButtonAriaLabel="select row"
+      />
+    );
+  }
+}
+
+
+ReactDOM.render(<DetailsListBasicExample />, document.getElementById('root'));
