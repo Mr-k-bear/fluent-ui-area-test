@@ -1,5 +1,7 @@
 # aria-labelledby on div element in detailslist missing reference
 
+link issue: https://github.com/microsoft/fluentui/issues/21116
+
 ### Environment Information
 
 - **Package version(s)**: fluentui/react@8.48.0
